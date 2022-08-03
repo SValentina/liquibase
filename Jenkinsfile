@@ -18,7 +18,7 @@ pipeline {
     }*/
     stage('Update sql') {
       steps {
-        sh 'liquibase update --url="jdbc:mysql://127.0.0.1:3306/mydb" --username=$MYSQL_CRED_USR --password=$MYSQL_CRED_PSW --changeLogFile=changelog.mysql.sql generateChangeLog'
+        sh 'liquibase --url="jdbc:mysql://127.0.0.1:3306/mydb" --username=$MYSQL_CRED_USR --password=$MYSQL_CRED_PSW --changeLogFile=changelog.mysql.sql generateChangeLog'
       }
     }
   }
