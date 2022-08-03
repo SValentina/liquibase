@@ -8,14 +8,14 @@ pipeline {
   stages {
     stage('Status') {
       steps {
-        sh 'liquibase status --url="jdbc:mysql://20.123.136.162:3306/db" --changeLogFile=my_app-wrapper.xml --username=$MYSQL_CRED_USR --password=$MYSQL_CRED_PSW'
+        sh 'liquibase status --url="jdbc:mysql://20.123.136.162:3306/mydb" --changeLogFile=my_app-wrapper.xml --username=$MYSQL_CRED_USR --password=$MYSQL_CRED_PSW'
       }
     }
-    /*stage('Update') {
+    stage('Update') {
       steps {
-        sh 'liquibase update --url="jdbc:mysql://20.123.136.162:3306/db" --changeLogFile=my_app-wrapper.xml --username=$MARIADB_CREDS_USR --password=$MARIADB_CREDS_PSW'
+        sh 'liquibase update --url="jdbc:mysql://20.123.136.162:3306/mydb" --changeLogFile=my_app-wrapper.xml --username=$MYSQL_CRED_USR --password=$MYSQL_CRED_PSW'
       }
-    }*/
+    }
   }
   post {
     always {
